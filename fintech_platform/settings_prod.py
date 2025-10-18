@@ -13,7 +13,7 @@ from .settings import *
 # Security
 DEBUG = False
 SECRET_KEY = config('SECRET_KEY')
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: v.split(',') if isinstance(v, str) and v else [])
 
 # Database
 DATABASES = {
